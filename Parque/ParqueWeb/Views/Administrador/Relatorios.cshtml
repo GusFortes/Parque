@@ -1,0 +1,34 @@
+﻿@model ParqueBLL.Passaporte
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div align="center">
+    <h1>Escolha qual tipo de relatório</h1>
+    <hr />
+</div>
+<div align="center">
+    <div class="col-md-4">
+        <form asp-action="Relatorios" align="center">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <h4 align="center">Vendas </h4>
+                <input asp-action="DiarioMensal" type="submit" value="Diário/Mensal" />
+                <input asp-action="ConsultaVendasPeriodo" type="submit" value="Período" />
+            </div>
+        </form>
+    </div>
+  
+    <div align="center">
+        <h4> Entradas por Período </h4>
+        <input asp-action="Entrada" type="submit" value="Consultar" />
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Home</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

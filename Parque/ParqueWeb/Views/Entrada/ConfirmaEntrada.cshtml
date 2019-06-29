@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ParqueBLL.Entrada>
+
+@{
+    ViewBag.Title = "Entrada Confirmada";
+}
+<h1 align="center">Entrada Confirmada!</h1><br>
+
+<h2 align="center">Bem-vindo ao Parque!</h2>
+<hr />
+<table class="table" align="center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassaporteID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataEntrada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassaporteID)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Home</a>
+    <input asp-action="ConfirmaCompra" type="submit" value="Confirmar Compra" />
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,40 @@
+﻿@model ParqueBLL.Entrada
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Compra de Ingressos</h1>
+
+<h4 align-center>Preencha os campos abaixo: </h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger" ></div>
+            <div class="form-group">
+                <label asp-for="PassaporteID" class="control-label" min="1"></label>
+                <input asp-for="PassaporteID" class="form-control" min="1"/>
+                <span asp-validation-for="PassaporteID" class="text-danger" min="1"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataEntrada" class="control-label"></label>
+                <input asp-for="DataEntrada" class="form-control" />
+                <span asp-validation-for="DataEntrada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <input asp-action="ConfirmaEntrada" type="submit" value="Entrar" />
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Home</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190519002618_Parque.cs" />
+    <Compile Remove="Migrations\20190519002618_Parque.Designer.cs" />
+    <Compile Remove="Migrations\20190519004905_Parque.cs" />
+    <Compile Remove="Migrations\20190519004905_Parque.Designer.cs" />
+    <Compile Remove="Migrations\20190519010538_Parque.cs" />
+    <Compile Remove="Migrations\20190519010538_Parque.Designer.cs" />
+    <Compile Remove="Migrations\20190519011035_Parque.cs" />
+    <Compile Remove="Migrations\20190519011035_Parque.Designer.cs" />
+    <Compile Remove="Migrations\20190527022232_Parque.cs" />
+    <Compile Remove="Migrations\20190527022232_Parque.Designer.cs" />
+    <Compile Remove="Migrations\20190530000242_Parque.cs" />
+    <Compile Remove="Migrations\20190530000242_Parque.Designer.cs" />
+    <Compile Remove="Migrations\20190531202257_Parque.cs" />
+    <Compile Remove="Migrations\20190531202257_Parque.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
+  </ItemGroup>
+
+</Project>

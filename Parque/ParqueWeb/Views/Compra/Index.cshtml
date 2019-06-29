@@ -1,0 +1,44 @@
+﻿@model ParqueBLL.Passaporte
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Compra de Ingressos</h1>
+
+<h4 align-center>Preencha os campos abaixo: </h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomeCliente" class="control-label"></label>
+                <input asp-for="NomeCliente" class="form-control" />
+                <span asp-validation-for="NomeCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInicial" class="control-label"></label>
+                <input asp-for="DataInicial" class="form-control" />
+                <span asp-validation-for="DataInicial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NroDias" class="control-label" min ="1"></label>
+                <input asp-for="NroDias" class="form-control" min ="1"/>
+                <span asp-validation-for="NroDias" class="text-danger" min ="1"></span>
+            </div>
+            <div>
+                @Html.EditorFor(x => x.Promocoes)
+            </div>
+            <div class="form-group">
+                <input asp-action="Orcar" type="submit" value="Solicitar Orçamento" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Home</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

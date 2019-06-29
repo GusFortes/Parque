@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ParqueBLL.Descontos>
+
+
+<form asp-action="HabilitarDesabilitar">
+    <table class="table">
+        <thead float: rigth>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeDesconto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr float: rigth>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeDesconto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        |
+                        <input asp-action="HabilitarDesabilitar" asp-route-id="@item.ID" type="submit" value="Habilitar/Desabilitar" />
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    </form>

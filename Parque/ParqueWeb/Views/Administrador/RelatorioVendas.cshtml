@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ParqueBLL.Passaporte>
+
+@{
+    ViewData["Title"] = "Relatório";
+}
+
+<h1>Relatório:</h1>
+
+<h4>Passaporte</h4>
+<hr/>
+<div>
+    <div>
+        <form asp-action="Index">
+            <table class="table">
+                <thead float: rigth>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NomeCliente)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NroDias)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataInicial)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ValorTotal)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr float: rigth>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NomeCliente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NroDias)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataInicial)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ValorTotal)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Voltar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

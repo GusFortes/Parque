@@ -1,0 +1,29 @@
+﻿@model ParqueBLL.DataConsulta
+@{
+    ViewData["Title"] = "DiarioMensal";
+}
+
+<h1> Relatório Diario/Mensal</h1>
+
+<form asp-action="DiarioMensal">
+    <div class="form-group">
+        <label asp-for="Dia" class="control-label" min="1" max="31"></label>
+        <input asp-for="Dia" class="form-control" min="1" max="31"/>
+        <span asp-validation-for="Dia" class="text-danger" min="1" max="31"></span>
+    </div> 
+    <input asp-action="ConsultaDia" type="submit" value="Consultar" />
+</form>
+<form asp-action="DiarioMensal">
+    <div class="form-group">
+        <label asp-for="Mes" class="control-label" min="1" max="12"></label>
+        <input asp-for="Mes" class="form-control" min="1" max="12"/>
+        <span asp-validation-for="Mes" class="text-danger" min="1" max="12"></span>
+    </div>
+    <input asp-action="ConsultaMes" type="submit" value="Consultar" />
+</form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
