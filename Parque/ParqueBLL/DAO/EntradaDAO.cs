@@ -31,5 +31,19 @@ namespace ParqueBLL
             }
             return true;
         }
+
+        internal List<Entrada> ConsultaEntradaPeriodo(DateTime dataInicial, DateTime dataFinal)
+        {
+            List<Entrada> entradas = new List<Entrada>();
+            var ent = from e in db.Entrada
+                              where (e.DataEntrada >= dataInicial) && (e.DataEntrada <= dataFinal)
+                              select e;
+            foreach (Entrada entrada in ent)
+            {
+                entradas.Add(entrada);
+            }
+
+            return entradas;
+        }
     }
 }

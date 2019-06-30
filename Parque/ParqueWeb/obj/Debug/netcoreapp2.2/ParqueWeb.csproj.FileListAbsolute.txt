@@ -46,3 +46,5 @@ C:\Users\Administrador\Desktop\Parque-20190529T224530Z-001\Parque\ParqueWeb\obj\
 C:\Users\Administrador\Desktop\Parque-20190529T224530Z-001\Parque\ParqueWeb\obj\Debug\netcoreapp2.2\Razor\Views\Administrador\ConsultaVendasPeriodo.g.cshtml.cs
 C:\Users\Administrador\Desktop\Parque-20190529T224530Z-001\Parque\ParqueWeb\obj\Debug\netcoreapp2.2\Razor\Views\Administrador\RelatorioVendas.g.cshtml.cs
 C:\Users\Administrador\Desktop\Parque-20190529T224530Z-001\Parque\ParqueWeb\obj\Debug\netcoreapp2.2\Razor\Views\Shared\EditorTemplates\CheckBoxListItem.g.cshtml.cs
+C:\Users\Administrador\Desktop\Parque-20190529T224530Z-001\Parque\ParqueWeb\obj\Debug\netcoreapp2.2\Razor\Views\Administrador\RelatorioEntrada.g.cshtml.cs
+C:\Users\Administrador\Desktop\Parque-20190529T224530Z-001\Parque\ParqueWeb\obj\Debug\netcoreapp2.2\Razor\Views\Administrador\ConsultaEntradaPeriodo.g.cshtml.cs

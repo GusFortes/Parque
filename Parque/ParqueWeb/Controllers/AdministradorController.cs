@@ -16,6 +16,7 @@ namespace ParqueWeb.Controllers
         {
             return View();
         }
+        [HttpPost]
         public IActionResult Descontos()
         {
             return View("Descontos", fachada.ConsultaDescontos());
@@ -63,7 +64,16 @@ namespace ParqueWeb.Controllers
         public IActionResult ConsultarPeriodo(DateTime dataInicial, DateTime dataFinal)
         {
             return View("RelatorioVendas", fachada.ConsultaVendasPeriodo(dataInicial, dataFinal));
+        }
+
+        public IActionResult ConsultaEntradaPeriodo()
+        {
+            return View();
+        }
+        public IActionResult ConsultarEntrada(DateTime dataInicial, DateTime dataFinal)
+        {
+            return View("RelatorioEntrada", fachada.ConsultaEntradaPeriodo(dataInicial, dataFinal));
+        }
     }
 
-}
 }

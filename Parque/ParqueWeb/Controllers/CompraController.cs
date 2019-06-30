@@ -11,25 +11,20 @@ namespace ParqueWeb.Controllers
     {
         FachadaParque fachada = new FachadaParque();
         List<Passaporte> passa = new List<Passaporte>();
-        PromocoesAtivas[] descontos = new PromocoesAtivas[4];
-        PromocoesAtivas descontoUni = PromocoesAtivas.UNIVERSITARIO;
-        PromocoesAtivas descontoIdoso = PromocoesAtivas.IDOSO;
-        PromocoesAtivas descontoPague = PromocoesAtivas.PAGUEBEM;
-        PromocoesAtivas descontoSeguro = PromocoesAtivas.SEGUROGARANTIDO;
-
 
         public IActionResult Index()
         {
             Passaporte novo = new Passaporte() { DataInicial = DateTime.Now };
 
-            List <Descontos> descontos = fachada.ConsultaDescontosHabilitados();
+            List<Descontos> descontoshabilitados = fachada.ConsultaDescontosHabilitados();
             var checkBoxListItems = new List<CheckBoxListItem>();
 
-            foreach (Descontos d in descontos)
+            foreach (Descontos d in descontoshabilitados)
                 checkBoxListItems.Add(new CheckBoxListItem()
                 {
+                    ID = d.ID,
                     Display = d.NomeDesconto,
-                    IsChecked = false 
+                    IsChecked = false
                 });
 
             novo.Promocoes = checkBoxListItems;
@@ -48,11 +43,27 @@ namespace ParqueWeb.Controllers
         [HttpPost]
         public IActionResult Orcar(Passaporte pass)
         {
+            List<Descontos> checkeds = new List<Descontos>();
+            PromocoesAtivas[] descontos = { PromocoesAtivas.SEMPROMOCAO, PromocoesAtivas.SEMPROMOCAO, PromocoesAtivas.SEMPROMOCAO, PromocoesAtivas.SEMPROMOCAO };
 
-            for(int i = 0; i <= pass.Promocoes.Count; i++)
+            foreach (CheckBoxListItem checkBox in pass.Promocoes)
+            {
+                if (checkBox.IsChecked)
+                {
+                    checkeds.Add(fachada.ConsultaDescontosPorID(checkBox.ID));
+                }
+            }
+
+            foreach (Descontos d in checkeds)
             {
 
+                if (d.ID == 1) { descontos[0] = PromocoesAtivas.UNIVERSITARIO; }
+                if (d.ID == 2) { descontos[1] = PromocoesAtivas.PAGUEBEM; }
+                if (d.ID == 3) { descontos[2] = PromocoesAtivas.IDOSO; }
+                if (d.ID == 4) { descontos[3] = PromocoesAtivas.SEGUROGARANTIDO; }
+
             }
+
 
             IPassaporte ipassaporte = fachada.CriarPassaporte(0, pass.NomeCliente, pass.NroDias, 100, pass.DataInicial.Day, pass.DataInicial.Month, pass.DataInicial.Year, descontos);
             Passaporte passaporte = new Passaporte();

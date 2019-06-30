@@ -45,9 +45,9 @@ namespace ParqueBLL.Data
             return null;
         }
 
-        public List<Passaporte> ConsultaComprasDia(int dia)
+        public List<Passaporte> ConsultaVendasDia(int dia)
         {
-            List<Passaporte> compras = new List<Passaporte>();
+            List<Passaporte> vendas = new List<Passaporte>();
 
             var passaportes = from p in db.Passaportes
                               where p.DataInicial.Day == dia
@@ -55,31 +55,31 @@ namespace ParqueBLL.Data
 
             foreach(Passaporte passa in passaportes)
             {
-                compras.Add(passa);
+                vendas.Add(passa);
             }
 
 
-            return compras;
+            return vendas;
         }
 
         public List<Passaporte> ConsultaVendasPeriodo(DateTime dataInicio, DateTime dataFim)
         {
 
-            List<Passaporte> compras = new List<Passaporte>();
+            List<Passaporte> vendas = new List<Passaporte>();
             var passaportes = from p in db.Passaportes
                               where(p.DataInicial >= dataInicio) && (p.DataInicial <= dataFim)
                               select p;
              foreach (Passaporte passa in passaportes)
             {
-                compras.Add(passa);
+                vendas.Add(passa);
             }
 
-            return compras;
+            return vendas;
         }
 
-        public List<Passaporte> ConsultaComprasMes(int mes)
+        public List<Passaporte> ConsultaVendasMes(int mes)
         {
-            List<Passaporte> compras = new List<Passaporte>();
+            List<Passaporte> vendas = new List<Passaporte>();
 
             var passaportes = from p in db.Passaportes
                               where p.DataInicial.Month == mes
@@ -87,11 +87,11 @@ namespace ParqueBLL.Data
 
             foreach (Passaporte passa in passaportes)
             {
-                compras.Add(passa);
+                vendas.Add(passa);
             }
 
 
-            return compras;
+            return vendas;
         }
 
 

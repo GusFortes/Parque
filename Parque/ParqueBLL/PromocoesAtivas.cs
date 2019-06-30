@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace ParqueBLL
 {
-    public enum PromocoesAtivas  {  UNIVERSITARIO, PAGUEBEM, IDOSO, SEGUROGARANTIDO }
+    public enum PromocoesAtivas  {  UNIVERSITARIO, PAGUEBEM, IDOSO, SEGUROGARANTIDO, SEMPROMOCAO }
 }

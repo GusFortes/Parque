@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ParqueBLL.Entrada>
+
+    @{
+    ViewData["Title"] = "Relatório de Entradas";
+    }
+
+    <div aling="center">
+        <h1>Relatorio de Entradas</h1>
+    </div>
+    <hr />
+    <div>
+        <div>
+            <form asp-action="Index">
+                <table class="table">
+                    <thead float: rigth>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DataEntrada)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PassaporteID)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr float: rigth>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataEntrada)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PassaporteID)
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <input type="submit" value="Voltar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+
+

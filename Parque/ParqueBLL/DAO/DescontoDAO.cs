@@ -50,5 +50,20 @@ namespace ParqueBLL.DAO
             return descontoshabilitados;
         }
 
+        public Descontos ConsultaDescontoPorID(int id)
+        {
+            var descontoID = from d in db.Desconto
+                             where d.ID == id
+                             select d;
+
+            foreach (Descontos des in descontoID)
+            {
+
+                return des;
+            }
+
+            return null;
+                   
+        }
     }
 }

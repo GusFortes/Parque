@@ -10,13 +10,13 @@ namespace ParqueBLL
 {
     public class FachadaParque
     {
-        PassaporteDAO compra = new PassaporteDAO();
-        ValidaEntrada valida = new ValidaEntrada();
-        EntradaDAO entradadao = new EntradaDAO();
+        PassaporteDAO passaporteDao = new PassaporteDAO();
+        ValidaEntrada validaEntrada = new ValidaEntrada();
+        EntradaDAO entradaDao = new EntradaDAO();
         Passaporte passaporte;
-        DescontoDAO descontodao = new DescontoDAO();
-        static Passaporte passaporteconfirmado = new Passaporte();
-        IPassaporte passaporteorcado;
+        DescontoDAO descontoDao = new DescontoDAO();
+        static Passaporte passaporteConfirmado = new Passaporte();
+        IPassaporte passaporteOrcado;
 
         public IPassaporte CriarPassaporte(int id, String umCliente,
                                                   int umNroDias,
@@ -28,55 +28,65 @@ namespace ParqueBLL
         {
 
 
-            passaporteorcado = PassaporteFactory.CriarPassaporte(id, umCliente, umNroDias, umValorBasico, dia, mes, ano, descontos);
+            passaporteOrcado = PassaporteFactory.CriarPassaporte(id, umCliente, umNroDias, umValorBasico, dia, mes, ano, descontos);
 
-            passaporteconfirmado.NomeCliente = passaporteorcado.NomeCliente;
-            passaporteconfirmado.NroDias = passaporteorcado.NroDias;
-            passaporteconfirmado.ValorTotal = passaporteorcado.valorTotal();
-            passaporteconfirmado.DataInicial = passaporteorcado.DataInicial;
+            passaporteConfirmado.NomeCliente = passaporteOrcado.NomeCliente;
+            passaporteConfirmado.NroDias = passaporteOrcado.NroDias;
+            passaporteConfirmado.ValorTotal = passaporteOrcado.valorTotal();
+            passaporteConfirmado.DataInicial = passaporteOrcado.DataInicial;
 
 
-            return passaporteorcado;
+            return passaporteOrcado;
         }
 
         public List<Descontos> ConsultaDescontosHabilitados()
         {
-            return descontodao.ConsultaDescontosHabilitados();
+            return descontoDao.ConsultaDescontosHabilitados();
         }
 
         public object ConsultaVendasPeriodo(DateTime dataInicio, DateTime dataFim)
         {
-            return compra.ConsultaVendasPeriodo(dataInicio, dataFim);
+            return passaporteDao.ConsultaVendasPeriodo(dataInicio, dataFim);
+        }
+
+        public List<Entrada> ConsultaEntradaPeriodo(DateTime dataInicial, DateTime dataFinal)
+        {
+            return entradaDao.ConsultaEntradaPeriodo(dataInicial, dataFinal);
+        }
+
+        public Descontos ConsultaDescontosPorID(int id)
+        {
+            return descontoDao.ConsultaDescontoPorID(id);
         }
 
         public List<Passaporte> Consultames(int mes)
         {
-            return compra.ConsultaComprasMes(mes);
+            return passaporteDao.ConsultaVendasMes(mes);
         }
 
         public List<Passaporte> ConsultaDia(int dia)
         {
-            return compra.ConsultaComprasDia(dia);
+            return passaporteDao.ConsultaVendasDia(dia);
         }
 
         public Passaporte ComprarPassaporte()
         {
-          return compra.persistirCompra(passaporteconfirmado);         
+            return passaporteDao.persistirCompra(passaporteConfirmado);
         }
 
         public Boolean ConfirmarEntrada(DateTime dataEntrada, int id)
         {
 
-            this.passaporte = compra.ConsultaPassaporte(id);
+            this.passaporte = passaporteDao.ConsultaPassaporte(id);
             if (this.passaporte == null)
             {
                 return false;
             }
-            if (entradadao.consultaEntrada(dataEntrada, passaporte.ID))
+            if (entradaDao.consultaEntrada(dataEntrada, passaporte.ID))
             {
-                if (valida.ValidarEntrada(dataEntrada, passaporte.DataInicial, passaporte.NroDias))
+                if (validaEntrada.ValidarEntrada(dataEntrada, passaporte.DataInicial, passaporte.NroDias))
                 {
-                    return entradadao.persistirEntrada(dataEntrada, passaporte.ID);
+                    return entradaDao.persistirEntrada(dataEntrada, passaporte.ID);
                 }
             }
             return false;
@@ -84,11 +94,11 @@ namespace ParqueBLL
 
         public IEnumerable<Descontos> ConsultaDescontos()
         {
-            return descontodao.ConsultaDescontos();
+            return descontoDao.ConsultaDescontos();
         }
         public void AlterarDesconto(int id)
         {
-            descontodao.AlteraDescontos(id);
+            descontoDao.AlteraDescontos(id);
         }
     }
 }

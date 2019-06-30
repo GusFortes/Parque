@@ -7,8 +7,8 @@ namespace ParqueBLL.Data
     {
         public Passaporte persistirCompra(Passaporte passaporte);
         public Passaporte ConsultaPassaporte(int id);
-        public List<Passaporte> ConsultaComprasDia(int dia);
-        public List<Passaporte> ConsultaComprasMes(int mes);
+        public List<Passaporte> ConsultaVendasDia(int dia);
+        public List<Passaporte> ConsultaVendasMes(int mes);
         public List<Passaporte> ConsultaVendasPeriodo(DateTime dataInicio, DateTime dataFim);
     }
 }
